@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                echo 'Code checked out'
+            }
+        }
+
+        stage('List Files') {
+            steps {
+                sh 'ls -R'
+            }
+        }
+
+        stage('Validate HTML Exists') {
+            steps {
+                sh 'test -f htmls/products.html'
+            }
+        }
+
+        stage('Done') {
+            steps {
+                echo 'Pipeline completed successfully'
+            }
+        }
+    }
+}
